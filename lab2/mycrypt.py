@@ -12,6 +12,8 @@ def encode(s):
         if c.isalpha():
             if c.islower():
                 c=c.upper()
+            else:
+                c=c.lower()
             # Rot13 the character for maximum security
             crypted+=codecs.encode(c,'rot13')
         elif c in digitmapping:
