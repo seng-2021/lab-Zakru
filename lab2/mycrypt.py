@@ -22,7 +22,7 @@ def encode(s):
             else:
                 raise ValueError
         elif c in digitmapping:
-          crypted+=digitmapping[c]
+            crypted+=digitmapping[c]
         else:
             raise ValueError
 
