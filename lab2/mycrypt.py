@@ -10,14 +10,20 @@ def encode(s):
         raise ValueError
     for c in s:
         if c.isalpha():
-            if c.islower():
-                c=c.upper()
+            co = ord(c)
+            if ord('A') <= co <= ord('Z') or ord('a') <= co <= ord('z'):
+                if c.islower():
+                    c=c.upper()
+                else:
+                    c=c.lower()
+                # Rot13 the character for maximum security
+                crypted+=codecs.encode(c,'rot13')
             else:
-                c=c.lower()
-            # Rot13 the character for maximum security
-            crypted+=codecs.encode(c,'rot13')
+                raise ValueError
         elif c in digitmapping:
           crypted+=digitmapping[c]
+        else:
+            raise ValueError
 
     return crypted
 
