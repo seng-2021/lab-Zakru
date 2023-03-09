@@ -49,6 +49,13 @@ def test_invalid_types(invalid_input):
         mycrypt.encode(invalid_input)
 
 
+@pytest.mark.parametrize("invalid_input", ["a" * 1001, "a" * 10000])
+def test_long_argument(invalid_input):
+    '''Attempting to encode a string longer than 1000 characters should raise ValueError'''
+    with pytest.raises(ValueError):
+        mycrypt.encode(invalid_input)
+
+
 def test_timing():
     '''Test whether encoding runs in approximately constant time, repetitions
     kept low to make test fast, use smallest measured time.
